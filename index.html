@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>AoC 2023 Solver</title>
+    <meta name="description" content="A solver for the problems from Advent of Code 2023">
+    <meta name="keywords" content="advent, of, code, 2023, solver, aoc, aoc2023, advent-of-code">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        html {
+            font-family: monospace
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        textarea {
+            width: calc(100% - 18px);
+            resize: none;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+
+        .result-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .result-content {
+            margin-top: 5px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            color: #555;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>AoC 2023 Solver</h1>
+        <label for="day">Day</label>
+        <select id="day" name="day">
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select>
+
+        <label for="input">Input</label>
+        <textarea id="input" name="input" rows="5"></textarea>
+
+        <button id="submitButton">Get Results</button>
+
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="icon-sm">
+            <!--path fill-rule="evenodd" clip-rule="evenodd"
+                d="M12 4C10.8954 4 10 4.89543 10 6H14C14 4.89543 13.1046 4 12 4ZM8.53513 4C9.22675 2.8044 10.5194 2 12 2C13.4806 2 14.7733 2.8044 15.4649 4H17C18.6569 4 20 5.34315 20 7V19C20 20.6569 18.6569 22 17 22H7C5.34315 22 4 20.6569 4 19V7C4 5.34315 5.34315 4 7 4H8.53513ZM8 6H7C6.44772 6 6 6.44772 6 7V19C6 19.5523 6.44772 20 7 20H17C17.5523 20 18 19.5523 18 19V7C18 6.44772 17.5523 6 17 6H16C16 7.10457 15.1046 8 14 8H10C8.89543 8 8 7.10457 8 6Z"
+                fill="currentColor"></path-->
+        </svg>
+
+        <div class="result">
+            <span class="result-label">Part 1</span>
+            <div id="part1" class="result-content">-</div>
+        </div>
+        <div class="result">
+            <span class="result-label">Part 2</span>
+            <div id="part2" class="result-content">-</div>
+        </div>
+
+    </div>
+
+    <script type="module">
+        import init, {solve} from "./aoc2023.js";
+
+        async function run() {
+            await init();
+
+            document.getElementById('submitButton').addEventListener('click', function () {
+                const day = parseInt(document.getElementById('day').value, 10);
+                const input = document.getElementById('input').value;
+
+                const part1 = solve(day, 1, input);
+                const part2 = solve(day, 2, input);
+
+                console.log(part1, part2);
+
+                document.getElementById('part1').textContent = part1;
+                document.getElementById('part2').textContent = part2;
+            });
+        }
+
+        run();
+    </script>
+</body>
+
+</html>
